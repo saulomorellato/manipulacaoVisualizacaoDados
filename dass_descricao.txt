@@ -1,0 +1,153 @@
+Esses dados foram coletados com uma versão on-line das Escalas de Depressão, Ansiedade e Estresse (DASS), veja http://www2.psy.unsw.edu.au/dass/
+
+A pesquisa estava aberta a qualquer pessoa e os participantes eram motivados a participar para obter resultados personalizados. No final do teste, eles também tinham a opção de completar uma breve pesquisa. Este conjunto de dados vem daqueles que concordaram em completar de pesquisa e responderam sim à pergunta "Você forneceu respostas precisas e elas podem ser usadas para pesquisa?" no final.
+
+Esses dados foram coletados entre 2017 e 2019.
+
+Os seguintes itens foram incluídos na pesquisa:
+
+Q1: Eu me encontrei ficando chateado por coisas bastante triviais.
+Q2: Eu estava ciente de secura na minha boca.
+Q3: Eu não conseguia sentir nenhuma sensação positiva.
+Q4: Eu experimentei dificuldade para respirar (por exemplo, respiração excessivamente rápida, falta de ar na ausência de esforço físico).
+Q5: Eu simplesmente não conseguia começar.
+Q6: Eu tendia a reagir de forma exagerada a situações.
+Q7: Eu tinha uma sensação de tremor (por exemplo, pernas prestes a ceder).
+Q8: Eu achei difícil relaxar.
+Q9: Eu me encontrei em situações que me deixavam tão ansioso que eu ficava muito aliviado quando terminavam.
+Q10: Eu senti que não tinha nada para esperar.
+Q11: Eu me encontrei ficando chateado com bastante facilidade.
+Q12: Eu senti que estava usando muita energia nervosa.
+Q13: Eu me senti triste e deprimido.
+Q14: Eu me encontrei ficando impaciente quando estava atrasado de alguma forma (por exemplo, elevadores, semáforos, sendo mantido esperando).
+Q15: Eu tive uma sensação de desmaio.
+Q16: Eu senti que perdi interesse em quase tudo.
+Q17: Eu senti que não valia muito como pessoa.
+Q18: Eu senti que estava bastante sensível.
+Q19: Eu suei visivelmente (por exemplo, mãos suadas) na ausência de altas temperaturas ou esforço físico.
+Q20: Eu senti medo sem nenhum bom motivo.
+Q21: Eu senti que a vida não valia a pena.
+Q22: Eu achei difícil relaxar.
+Q23: Eu tive dificuldade em engolir.
+Q24: Eu não conseguia obter qualquer prazer das coisas que fazia.
+Q25: Eu estava ciente da ação do meu coração na ausência de esforço físico (por exemplo, sensação de aumento da frequência cardíaca, coração pulando uma batida).
+Q26: Eu me senti abatido e triste.
+Q27: Eu achei que estava muito irritável.
+Q28: Eu senti que estava perto de entrar em pânico.
+Q29: Eu achei difícil me acalmar depois que algo me chateava.
+Q30: Eu temia que seria "derrubado" por alguma tarefa trivial, mas desconhecida.
+Q31: Eu não conseguia ficar entusiasmado com nada.
+Q32: Eu achei difícil tolerar interrupções no que eu estava fazendo.
+Q33: Eu estava em um estado de tensão nervosa.
+Q34: Eu senti que não valia nada.
+Q35: Eu era intolerante a qualquer coisa que me impedisse de continuar o que estava fazendo.
+Q36: Eu me senti aterrorizado.
+Q37: Eu não conseguia ver nada no futuro para ter esperança.
+Q38: Eu senti que a vida não tinha sentido.
+Q39: Eu me encontrei ficando agitado.
+Q40: Eu estava preocupado com situações em que eu poderia entrar em pânico e fazer papel de bobo.
+Q41: Eu experimentei tremores (por exemplo, nas mãos).
+Q42: Eu achei difícil ter iniciativa para fazer as coisas.
+
+Cada item foi apresentado um de cada vez em uma ordem aleatória para cada novo participante, juntamente com uma escala de classificação de 4 pontos, pedindo ao usuário para indicar com que frequência isso tinha sido verdadeiro para eles na última semana, onde:
+
+1 = Não se aplicava a mim de forma alguma
+2 = Se aplicava a mim em certo grau, ou em parte do tempo
+3 = Se aplicava a mim em um grau considerável, ou em boa parte do tempo
+4 = Se aplicava a mim muito, ou na maior parte do tempo
+
+Essa resposta é armazenada na variável A (por exemplo, Q1A). Também foi registrado o tempo levado em milissegundos para responder a essa pergunta (E) e a posição dessa pergunta na pesquisa (I).
+
+Essas outras durações também foram registradas (medidas do lado do servidor):
+
+introelapse: O tempo gasto na página de introdução/landing (em segundos)
+testelapse: O tempo gasto em todas as perguntas do DASS (deve ser equivalente ao tempo decorrido em todas as perguntas individuais combinadas)
+surveyelapse: O tempo gasto respondendo ao restante das perguntas demográficas e da pesquisa
+
+Na próxima página havia uma pesquisa genérica de demografia com muitas perguntas diferentes.
+
+O Inventário de Personalidade de Dez Itens foi administrado (veja Gosling, S. D., Rentfrow, P. J., & Swann, W. B., Jr. (2003). A Very Brief Measure of the Big Five Personality Domains. Journal of Research in Personality, 37, 504-528.):
+
+TIPI1: Extrovertido, entusiasta.
+TIPI2: Crítico, briguento.
+TIPI3: Confiável, autodisciplinado.
+TIPI4: Ansioso, facilmente chateado.
+TIPI5: Aberto a novas experiências, complexo.
+TIPI6: Reservado, quieto.
+TIPI7: Simpático, caloroso.
+TIPI8: Desorganizado, descuidado.
+TIPI9: Calmo, emocionalmente estável.
+TIPI10: Convencional, pouco criativo.
+
+Os itens do TIPI foram avaliados com "Eu me vejo como:" _____ de forma que
+
+1 = Discordo totalmente
+2 = Discordo moderadamente
+3 = Discordo um pouco
+4 = Nem concordo nem discordo
+5 = Concordo um pouco
+6 = Concordo moderadamente
+7 = Concordo totalmente
+
+
+Os seguintes itens foram apresentados como uma lista de verificação e os participantes foram instruídos "Na grade abaixo, marque todas as palavras cujas definições você tem certeza de que conhece":
+
+VCL1: barco
+VCL2: incoerente
+VCL3: pálido
+VCL4: robô
+VCL5: audível
+VCL6: cuivocal
+VCL7: escassez
+VCL8: epistemologia
+VCL9: florted
+VCL10: decidir
+VCL11: pastiche
+VCL12: verdid
+VCL13: abismal
+VCL14: lúcido
+VCL15: trair
+VCL16: engraçado
+
+VCL1	boat
+VCL2	incoherent
+VCL3	pallid
+VCL4	robot
+VCL5	audible
+VCL6	cuivocal
+VCL7	paucity
+VCL8	epistemology
+VCL9	florted
+VCL10	decide
+VCL11	pastiche
+VCL12	verdid
+VCL13	abysmal
+VCL14	lucid
+VCL15	betray
+VCL16	funny
+
+
+Um valor de 1 é marcado, 0 significa não marcado. As palavras em VCL6, VCL9 e VCL12 não são palavras reais e podem ser usadas como um verificador de validade.
+
+Várias outras perguntas foram então feitas:
+
+education: "Quanta educação você completou?", 1=Menos que o ensino médio, 2=Ensino médio, 3=Graduação universitária, 4=Pós-graduação
+urban: "Que tipo de área você morava quando era criança?", 1=Rural (campo), 2=Suburbano, 3=Urbano (cidade)
+gender: "Qual é o seu gênero?", 1=Masculino, 2=Feminino, 3=Outro
+engnat: "O inglês é sua língua nativa?", 1=Sim, 2=Não
+age: "Quantos anos você tem?"
+hand: "Com qual mão você escreve?", 1=Direita, 2=Esquerda, 3=Ambas
+religion: "Qual é a sua religião?", 1=Agnóstico, 2=Atheísta, 3=Budista, 4=Cristão (Católico), 5=Cristão (Mórmon), 6=Cristão (Protestante), 7=Cristão (Outro), 8=Hindu, 9=Judeu, 10=Muçulmano, 11=Sikh, 12=Outro
+orientation: "Qual é a sua orientação sexual?", 1=Heterossexual, 2=Bissexual, 3=Homosexual, 4=Assexual, 5=Outro
+race: "Qual é a sua raça?", 10=Asiático, 20=Árabe, 30=Negro, 40=Indígena Australiano, 50=Nativo Americano, 60=Branco, 70=Outro
+voted: "Você votou em uma eleição nacional no ano passado?", 1=Sim, 2=Não
+married: "Qual é o seu estado civil?", 1=Nunca casado, 2=Atualmente casado, 3=Já casado
+familysize: "Incluindo você, quantos filhos sua mãe teve?"
+major: "Se você frequentou uma universidade, qual foi sua especialização (por exemplo, 'psicologia', 'inglês', 'engenharia civil')?"
+
+Os seguintes valores foram derivados de informações técnicas:
+
+country: Código do país ISO de onde o usuário se conectou
+screensize: 1=dispositivo com tela pequena (telefone, etc), 2=dispositivo com tela grande (laptop, desktop, etc)
+uniquenetworklocation: 1=apenas uma pesquisa da rede específica do usuário no conjunto de dados, 2=várias pesquisas enviadas da rede deste usuário (2 não implica necessariamente registros duplicados de um indivíduo, pois pode ser diferentes estudantes em uma única escola ou diferentes membros da mesma família; e mesmo se 1 ainda pode haver registros duplicados de um único indivíduo, por exemplo, se ele fez uma vez no Wi-Fi e outra no telefone)
+source: como o usuário encontrou o teste, 1=da página inicial do site que hospeda a pesquisa, 2=do Google, 0=outro ou desconhecido
