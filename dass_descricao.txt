@@ -92,23 +92,6 @@ Os itens do TIPI foram avaliados com "Eu me vejo como:" _____ de forma que
 
 Os seguintes itens foram apresentados como uma lista de verificação e os participantes foram instruídos "Na grade abaixo, marque todas as palavras cujas definições você tem certeza de que conhece":
 
-VCL1: barco
-VCL2: incoerente
-VCL3: pálido
-VCL4: robô
-VCL5: audível
-VCL6: cuivocal
-VCL7: escassez
-VCL8: epistemologia
-VCL9: florted
-VCL10: decidir
-VCL11: pastiche
-VCL12: verdid
-VCL13: abismal
-VCL14: lúcido
-VCL15: trair
-VCL16: engraçado
-
 VCL1	boat
 VCL2	incoherent
 VCL3	pallid
