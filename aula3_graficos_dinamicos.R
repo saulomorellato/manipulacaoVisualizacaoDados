@@ -1,11 +1,18 @@
 ### PACOTES ###
 
+library(tidyverse)
 library(plotly)
 
 
 
-### GRAFICOS ###
+### CARREGANDO DADOS ###
 
+dados<- readRDS("dados_tratados.rds")
+
+
+
+
+### GRAFICOS ###
 
 ### escore x idade x genero
 
@@ -41,7 +48,7 @@ plt<- dados %>%
                             "Masculino",
                             "Outro")) %>% 
   ggplot(aes(x=idade,y=tot,colour=genero,
-             text=paste("Escore:",tot,"\n",
+             text=paste("Escore DASS:",tot,"\n",
                         "Idade:",idade,"\n",
                         "Gênero:",genero))) +
   geom_point() +
@@ -148,7 +155,7 @@ ggplotly(plt) %>% layout(boxmode="group")
 
 
 
-### escores x genero x extrovertido
+### escores x genero x extrovertido (violino)
 
 plt<- dados %>% 
   mutate(genero=fct_relevel(genero,
