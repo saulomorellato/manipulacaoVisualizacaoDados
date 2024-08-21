@@ -264,3 +264,8 @@ dados<- dados %>%
 
 
 
+# SALVAR OS DADOS TRATADOS (saveRDS ou write_csv?)
+#https://roelandtn.frama.io/post/saverds-vs-write-csv/
+
+saveRDS(dados, "dados_tratados.rds")
+

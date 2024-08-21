@@ -1,6 +1,13 @@
 ### PACOTES ###
 
+library(tidyverse)
 library(gtsummary)
+
+
+
+### CARREGANDO DADOS ###
+
+dados<- readRDS("dados_tratados.rds")
 
 
 
