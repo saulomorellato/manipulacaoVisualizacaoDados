@@ -23,7 +23,7 @@ dados %>%
                                   "Casado",
                                   "Outro")) %>% 
   tbl_summary() %>% 
-  bold_labels() %>% show_header_names()
+  bold_labels()
 
 
 
@@ -56,8 +56,12 @@ tbl<- tbl %>%
 tbl
 
 
+# para mais dicas sobre gtsummary acesse
+# https://cran.r-project.org/web/packages/gtsummary/readme/README.html
 
-### GRÁFICOS ###
+
+
+### GRAFICOS ###
 
 
 ### idade x estado civil x genero
