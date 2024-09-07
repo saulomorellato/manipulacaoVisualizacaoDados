@@ -1,42 +1,399 @@
 ---
 title: "DASS App"
+runtime: shiny
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: rows
+    social: menu
     vertical_layout: fill
-runtime: shiny
+#    vertical_layout: scroll
+#    theme: 
+#      bootswatch: sandstone
+#      primary: grey
+#    theme: flatly
+    theme: lumen
 ---
 
 ```{r setup, include=FALSE}
+
+### PACOTES ###
+
 library(flexdashboard)
 library(tidyverse)
+library(plotly)
+library(gtsummary)
 
+### CARREGANDO DADOS ###
+
+dados<- readRDS("dados_tratados.rds")
+dados2<- dados %>% 
+  mutate(DASS_Total = tot,
+         Depressao = dep,
+         Ansiedade = ans,
+         Estresse = est) %>% 
+  select(-c(tot, dep, ans, est))
 
 ```
 
-# Análise Exploratória
 
-Column {data-width=650}
+# Análise Exploratória {data-icon="fa-chart-line"}
+
+
+Row
 -----------------------------------------------------------------------
 
-### Chart A
+### Total de respondentes
 
 ```{r}
-
+valueBox(value = nrow(dados),
+         color = "primary",
+         icon = "fa-users")
 ```
 
-Column {data-width=350}
+
+### Escore DASS médio
+
+```{r}
+valueBox(value = round(mean(dados$tot),2),
+         color = "primary",
+         icon = "fa-head-side-virus")
+
+# gauge(value = round(mean(dados$tot),2),
+#       min = 0,
+#       max = 3*42,
+#       symbol = NULL,
+#       gaugeSectors(success = c(0, 30.5),
+#                    warning = c(30.5, 59.5 ),
+#                    danger = c(59.5, 1000)))
+```
+
+
+### Escore de depressão médio
+
+```{r}
+valueBox(value = round(mean(dados$dep),2),
+         color = "primary",
+         icon = "fa-head-side-virus")
+
+# gauge(value = round(mean(dados$dep),2),
+#       min = 0,
+#       max = 3*14,
+#       symbol = NULL,
+#       gaugeSectors(success = c(0, 13.5),
+#                    warning = c(13.5, 20.5 ),
+#                    danger = c(20.5, 1000)))
+```
+
+
+### Escore de ansiedade médio
+
+```{r}
+valueBox(value = round(mean(dados$ans),2),
+         color = "primary",
+         icon = "fa-head-side-virus")
+
+# gauge(value = round(mean(dados$ans),2),
+#       min = 0,
+#       max = 3*14,
+#       symbol = NULL,
+#       gaugeSectors(success = c(0, 9.5),
+#                    warning = c(9.5, 14.5 ),
+#                    danger = c(14.5, 1000)))
+```
+
+
+### Escore de estresse médio
+
+```{r}
+valueBox(value = round(mean(dados$est),2),
+         color = "primary",
+         icon = "fa-head-side-virus")
+
+# gauge(value = round(mean(dados$est),2),
+#       min = 0,
+#       max = 3*14,
+#       symbol = NULL,
+#       gaugeSectors(success = c(0, 18.5),
+#                    warning = c(18.5, 25.5 ),
+#                    danger = c(25.5, 1000)))
+```
+
+
+
+
+Row
 -----------------------------------------------------------------------
 
-### Chart B
+### Dados Básico {data-width=200}
 
 ```{r}
+tbl<- dados %>% 
+  select(idade, genero, estado_civil) %>% 
+  mutate(estado_civil=fct_relevel(estado_civil,
+                                  "Solteiro",
+                                  "Casado",
+                                  "Outro")) %>% 
+  tbl_summary() %>% 
+  bold_labels()
+
+tbl<- tbl %>%
+  modify_header(label="**Variável**",
+                stat_0="**N = 34,334**")
+
+tbl<- tbl %>%
+  modify_footnote(all_stat_cols() ~ "mediana (Q1, Q3); n (%)")
+
+tbl
 
 ```
 
-### Chart C
+
+### Idade x Estado civil x Gênero {data-width=400}
+
+```{r}
+plt<- dados %>% 
+  filter(idade<100) %>% 
+  mutate(estado_civil=fct_relevel(estado_civil,
+                                  "Solteiro",
+                                  "Casado",
+                                  "Outro"),
+         genero=fct_relevel(genero,
+                            "Feminino",
+                            "Masculino",
+                            "Outro")) %>% 
+  ggplot(aes(x=estado_civil,y=idade,fill=genero)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(x="Estado Civíl",
+       y="Idade",
+       fill="Gênero",
+       title="") +
+  theme(legend.position="right")    # "none", "left", "right", "bottom", "top", "inside"
+
+ggplotly(plt) %>% layout(boxmode="group")
+
+```
+
+
+### Cor/Raça {data-width=400}
+
+```{r}
+plt<- dados %>% 
+  group_by(cor_raca) %>% 
+  summarise(freq = n()) %>%
+  ggplot(aes(x=freq,
+             y=reorder(cor_raca,freq),
+             fill=-freq,
+             text=paste("Frequência:",freq))) + 
+  geom_bar(stat="identity") +
+  theme_bw() +
+  labs(x="Frequência",
+       y="",
+       #fill="",
+       title="") +
+  theme(legend.position="none")    # "none", "left", "right", "bottom", "top", "inside"
+
+ggplotly(plt, tooltip=c("text"))
+
+```
+
+
+
+
+
+# Explorandos os Escores {data-icon="ion-toggle"}
+
+
+Sidebar {.sidebar}
+-----------------------------------------------------------------------
 
 ```{r}
 
+# radioButtons(inputId="select_dass",
+#             choices = c("DASS - Total","Depressão","Ansiedade","Estresse"),
+#             selected = "DASS - Total")
+
+# selectInput(inputId="select_dass",
+#             label="Selecione um dos escores:",
+#             choices = c("DASS - Total","Depressão","Ansiedade","Estresse"),
+#             selected = "DASS - Total")
+
+
+radioButtons(inputId="select_dass",
+            label="Selecione um dos escores:",
+            choices = c("DASS_Total", "Depressao", "Ansiedade", "Estresse"),
+            selected = "DASS_Total")
+
+
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Distribuição dos Escores
+
+```{r}
+
+# renderPlotly({
+#   
+#   if(input$select_dass=="DASS - Total"){
+#   histo<- dados %>% 
+#   ggplot(aes(x=tot)) +
+#   geom_histogram(aes(y=after_stat(density)),
+#                  bins=15,
+#                  colour="black",
+#                  fill="white") +
+#   geom_density(alpha=.5, fill="blue") + 
+#   theme_bw() +
+#   labs(x="Escore",
+#        y="Densidade",
+#        #fill="",
+#        title="DASS - Total")
+#   histo<- ggplotly(histo)
+#   }
+# 
+#     
+#   if(input$select_dass=="Depressão"){
+#   histo<- dados %>% 
+#   ggplot(aes(x=dep)) +
+#   geom_histogram(aes(y=after_stat(density)),
+#                  bins=15,
+#                  colour="black",
+#                  fill="white") +
+#   geom_density(alpha=.5, fill="blue") + 
+#   theme_bw() +
+#   labs(x="Escore",
+#        y="Densidade",
+#        #fill="",
+#        title="Depressão")
+#   histo<- ggplotly(histo)
+#   }
+# 
+#     
+#   if(input$select_dass=="Ansiedade"){
+#   histo<- dados %>% 
+#   ggplot(aes(x=ans)) +
+#   geom_histogram(aes(y=after_stat(density)),
+#                  bins=15,
+#                  colour="black",
+#                  fill="white") +
+#   geom_density(alpha=.5, fill="blue") + 
+#   theme_bw() +
+#   labs(x="Escore",
+#        y="Densidade",
+#        #fill="",
+#        title="Ansiedade")
+#   histo<- ggplotly(histo)
+#   }
+#   
+#   
+#   if(input$select_dass=="Estresse"){
+#   histo<- dados %>% 
+#   ggplot(aes(x=tot)) +
+#   geom_histogram(aes(y=after_stat(density)),
+#                  bins=15,
+#                  colour="black",
+#                  fill="white") +
+#   geom_density(alpha=.5, fill="blue") + 
+#   theme_bw() +
+#   labs(x="Escore",
+#        y="Densidade",
+#        #fill="",
+#        title="Estresse")
+#   histo<- ggplotly(histo)
+#   }
+# 
+#   
+#   return(histo)
+#   
+# })  
+
+
+renderPlotly({
+  
+  histo<- dados2 %>% 
+  ggplot(aes(x=!!sym(input$select_dass))) +
+  geom_histogram(aes(y=after_stat(density)),
+                 bins=15,
+                 colour="black",
+                 fill="white") +
+  geom_density(alpha=.5, fill="blue") + 
+  theme_bw() +
+  labs(x="Escore",
+       y="Densidade",
+       #fill="",
+       #title=input$select_dass,
+       title="")
+  histo<- ggplotly(histo)
+  
+})
+
+```
+
+
+
+Row
+-----------------------------------------------------------------------
+
+### Distribuição do Escore por Estado Cívil e Gênero
+
+```{r}
+
+renderPlotly({
+  
+  plt<- dados2 %>% 
+  mutate(estado_civil=fct_relevel(estado_civil,
+                                  "Solteiro",
+                                  "Casado",
+                                  "Outro"),
+         genero=fct_relevel(genero,
+                            "Feminino",
+                            "Masculino",
+                            "Outro")) %>% 
+  ggplot(aes(x=estado_civil,y=!!sym(input$select_dass),fill=genero)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(x="Estado Civíl",
+       y="Escore",
+       fill="Gênero",
+       #title=input$select_dass,
+       title="") +
+  theme(legend.position="right")    # "none", "left", "right", "bottom", "top", "inside"
+
+  plt<- ggplotly(plt) %>% layout(boxmode="group")
+  
+  return(plt)
+  
+})
+
+
+```
+
+
+
+### Distribuição do Escore por Cor/Raça
+
+```{r}
+renderPlotly({
+  
+  plt<- dados2 %>% 
+  ggplot(aes(x=cor_raca,y=!!sym(input$select_dass),fill=cor_raca)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(x="Cor/Raça",
+       y="Escore",
+       fill="Cor/Raça",
+       #title=input$select_dass,
+       title="") +
+  theme(legend.position="right") +
+  theme(axis.title.x=element_blank(), # remove label
+        axis.text.x=element_blank(),  # remove texto
+        axis.ticks.x=element_blank()) # remove marcacoes
+  
+  plt<- ggplotly(plt)
+  
+  return(plt)
+  
+})
 ```
 

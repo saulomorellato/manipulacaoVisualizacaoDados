@@ -32,9 +32,9 @@ dados<- dados %>%
 # CALCULANDO OS ESCORES
 
 dados<- dados %>% 
-  mutate(dep = q3a + q5a + q10a + q13a + q16a + q17a + q21a + q24a + q26a + q31a + q34a + q37a + q38a + q42a,
-         ans = q2a + q4a + q7a + q9a + q15a + q19a + q20a + q23a + q25a + q28a + q30a + q36a + q40a + q41a,
-         est = q1a + q6a + q8a + q11a + q12a + q14a + q18a + q22a + q27a + q29a + q32a + q33a + q35a + q39a,
+  mutate(dep = q3a + q5a + q10a + q13a + q16a + q17a + q21a + q24a + q26a + q31a + q34a + q37a + q38a + q42a - 14,
+         ans = q2a + q4a + q7a + q9a + q15a + q19a + q20a + q23a + q25a + q28a + q30a + q36a + q40a + q41a - 14,
+         est = q1a + q6a + q8a + q11a + q12a + q14a + q18a + q22a + q27a + q29a + q32a + q33a + q35a + q39a - 14,
          tot = dep + ans + est) %>% 
   select(!starts_with("q"))
 
@@ -252,7 +252,12 @@ dados<- dados %>%
 dados<- dados %>% 
   filter(genero!=0,
          estado_civil!=0,
-         religiao!=0)
+         religiao!=0,
+         moradia_infancia!=0,
+         orientacao!=0,
+         educacao!=0,
+         idioma!=0,
+         lateralidade!=0)
 
 
 
