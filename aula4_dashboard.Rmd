@@ -10,8 +10,20 @@ output:
 #    theme: 
 #      bootswatch: sandstone
 #      primary: grey
-#    theme: flatly
+    #theme: flatly
     theme: lumen
+    #theme: sandstone
+    #theme: default
+    #theme: cosmo
+    #theme: bootstrap
+    #theme: cerulean
+    #theme: journal
+    #theme: readable
+    #theme: spacelab
+    #theme: united
+    #theme: paper
+    #theme: simplex
+    #theme: yeti
 ---
 
 ```{r setup, include=FALSE}
