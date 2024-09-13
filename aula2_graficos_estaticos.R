@@ -246,7 +246,7 @@ dados %>%
                  bins=15,
                  colour="black",
                  fill="white") +
-  geom_density(alpha=.2, fill="blue") + 
+  geom_density(alpha=.5, fill="blue") + 
   theme_bw()
 
 
@@ -258,7 +258,7 @@ dados %>%
                  bins=15,
                  colour="black",
                  fill="white") +
-  geom_density(alpha=.2, fill="blue") + 
+  geom_density(alpha=.5, fill="blue") + 
   theme_bw() +
   labs(x="Escore",
        y="Densidade",
